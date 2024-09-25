@@ -1,11 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { useRepoStore } from '@/stores/repo'
+import { storeToRefs } from 'pinia'
 
-const startInitial = new Date()
-startInitial.setMonth(startInitial.getMonth() - 1)
-
-const startDate = ref(startInitial)
-const endDate = ref(new Date())
+const repo = useRepoStore()
+const { startDate, endDate } = storeToRefs(repo)
 </script>
 
 <template>
