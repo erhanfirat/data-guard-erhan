@@ -1,15 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about flex flex-col g-5">
+    <h1 class="text-xl">About</h1>
+    <hr />
+    <a href="https://www.linkedin.com/in/erhanfirat/" target="_blank">Linked.in Profile</a>
+    <a href="https://github.com/erhanfirat" target="_blank">Github Profile</a>
+    <a href="https://github.com/erhanfirat/data-guard-erhan" target="_blank"
+      >Project's Github Link</a
+    >
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<style scoped></style>
