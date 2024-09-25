@@ -1,9 +1,11 @@
 <script setup>
 import { programmingLangs, useRepoStore } from '@/stores/repo'
 import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 import VueSelect from 'vue3-select-component'
 const repo = useRepoStore()
 const { selectedLangs } = storeToRefs(repo)
+const selected = ref(null)
 </script>
 
 <template>
@@ -21,7 +23,12 @@ const { selectedLangs } = storeToRefs(repo)
   <VueSelect
     v-model="selected"
     :options="programmingLangs.filter((l) => !selectedLangs.includes(l))"
-    @option-selected="repo.selectLang"
+    @option-selected="
+      (l) => {
+        repo.selectLang(l)
+        selected = null
+      }
+    "
     placeholder="Search languages..."
   />
 </template>
