@@ -6,6 +6,15 @@ import VueSelect from 'vue3-select-component'
 const repo = useRepoStore()
 const { selectedLangs } = storeToRefs(repo)
 const selected = ref(null)
+
+const selectLangPre = (lang) => {
+  repo.selectLang(lang)
+  selected.value = null
+  console.log(document.getElementById('lang-input'))
+  setTimeout(() => {
+    document.getElementById('lang-input').focus()
+  }, 0)
+}
 </script>
 
 <template>
@@ -22,13 +31,9 @@ const selected = ref(null)
 
   <VueSelect
     v-model="selected"
+    input-id="lang-input"
     :options="programmingLangs.filter((l) => !selectedLangs.includes(l))"
-    @option-selected="
-      (l) => {
-        repo.selectLang(l)
-        selected = null
-      }
-    "
+    @option-selected="selectLangPre"
     placeholder="Search languages..."
   />
 </template>
