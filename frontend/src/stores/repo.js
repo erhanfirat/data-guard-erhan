@@ -40,6 +40,8 @@ export const useRepoStore = defineStore('repo', () => {
       })
       .then((res) => {
         console.log('repo response > ', res.data)
+        // clear previous search results
+        results.value = {}
         res.data.items.forEach((repo) => {
           if (results.value[repo.language]) {
             results.value[repo.language].push(repo)

@@ -16,8 +16,8 @@ const repo = useRepoStore()
     <Dates />
     <hr class="borderm-b py-3 mb-3" />
     <Stars />
-    <hr class="borderm-b py-3 mb-3" />
-    <button class="btn w-full" @click="repo.doSearch" :disabled="repo.loading">
+
+    <button class="btn w-full mt-6" @click="repo.doSearch" :disabled="repo.loading">
       <Spinner v-if="repo.loading" />
       Search
     </button>

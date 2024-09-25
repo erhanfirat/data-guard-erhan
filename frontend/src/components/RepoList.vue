@@ -11,6 +11,6 @@
 
 <style scoped>
 .lang-repositories {
-  @apply basis-[20rem] border rounded shadow p-3 mb-3 max-h-60 overflow-y-auto;
+  @apply flex-1 basis-[20rem] border rounded shadow-lg p-3 max-h-80 overflow-y-auto;
 }
 </style>
