@@ -1,18 +1,21 @@
 <script setup>
 import { ref } from 'vue'
 
-const startDate = ref(new Date())
+const startInitial = new Date()
+startInitial.setMonth(startInitial.getMonth() - 1)
+
+const startDate = ref(startInitial)
 const endDate = ref(new Date())
 </script>
 
 <template>
   <label>
     from
-    <input type="date" v-model="startDate" />
+    <VueDatePicker v-model="startDate" :enable-time-picker="false"></VueDatePicker>
   </label>
   <label>
     to
-    <input type="date" v-model="endDate" />
+    <VueDatePicker v-model="endDate" :enable-time-picker="false"></VueDatePicker>
   </label>
 </template>
 
