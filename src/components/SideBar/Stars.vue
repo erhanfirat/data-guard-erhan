@@ -1,7 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { useRepoStore } from '@/stores/repo'
+import { storeToRefs } from 'pinia'
 
-const minStars = ref(100)
+const repo = useRepoStore()
+const { minStars } = storeToRefs(repo)
 </script>
 
 <template>
@@ -11,5 +13,4 @@ const minStars = ref(100)
   </label>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
