@@ -32,16 +32,30 @@ export const useRepoStore = defineStore('repo', () => {
 
   function doSearch() {
     loading.value = true
+    let queryStr = ''
+    if (selectedLangs.value.length) {
+      queryStr += ` language:${selectedLangs.value.map((l) => l.value).toString()} `
+    }
+    if (minStars.value) {
+      queryStr += ` stars:>=${minStars.value}  `
+    }
+    if (startDate.value) {
+      queryStr += ` created:>${startDate.value.toISOString().split('T')[0]} `
+    }
+    if (endDate.value) {
+      queryStr += ` ${startDate.value ? 'AND' : ''} created:<${endDate.value.toISOString().split('T')[0]} `
+    }
+
     api
       .get('/search-repos', {
         params: {
-          q: `stars:>=${minStars.value} language:${selectedLangs.value.map((l) => l.value).toString()} created:>${startDate.value.toISOString().split('T')[0]} AND created:<${endDate.value.toISOString().split('T')[0]} `
+          q: queryStr
         }
       })
       .then((res) => {
-        console.log('repo response > ', res.data)
         // clear previous search results
         results.value = {}
+        // classify repos by programming language
         res.data.items.forEach((repo) => {
           if (results.value[repo.language]) {
             results.value[repo.language].push(repo)
@@ -49,8 +63,6 @@ export const useRepoStore = defineStore('repo', () => {
             results.value[repo.language] = [repo]
           }
         })
-
-        console.log('results final > ', results)
         loading.value = false
         fetched.value = true
       })
