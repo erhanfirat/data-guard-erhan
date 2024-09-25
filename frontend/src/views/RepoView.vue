@@ -17,7 +17,7 @@ console.log(repo.results)
       </template>
       <template #repositories>
         <div v-for="repo in langRepoList" :key="repo.id" class="my-4 pe-3">
-          <a :href="repo.html_url" class="text-lg">{{ repo.full_name }}</a>
+          <a :href="repo.html_url" class="text-lg" target="_blank">{{ repo.full_name }}</a>
           <div class="flex justify-between">
             <p><span class="text-xs pl-2">&#11088; </span>{{ repo.stargazers_count }}</p>
             <p class="text-sm text-right italic pl-2">
