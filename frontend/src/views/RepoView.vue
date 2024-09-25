@@ -8,7 +8,7 @@ console.log(repo.results)
 </script>
 
 <template>
-  <h3 class="pb-3 mb-3">Main Page</h3>
+  <h3 class="pb-3 mb-3">Repositories</h3>
   <div class="repos-container flex flex-wrap gap-3">
     <!-- <div v-for="langRepoList in repo.results" :key="langRepoList[0].language">{{ repo }}</div> -->
     <RepoList v-for="langRepoList in repo.results" :key="langRepoList[0].language">

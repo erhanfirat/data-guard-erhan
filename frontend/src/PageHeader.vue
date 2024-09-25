@@ -37,7 +37,7 @@ header {
 }
 
 .user-info {
-  @apply flex items-center gap-6;
+  @apply items-center gap-6 hidden md:flex;
 }
 
 .avatar {

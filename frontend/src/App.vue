@@ -6,7 +6,7 @@ import PageHeader from './PageHeader.vue'
 
 <template>
   <PageHeader />
-  <main class="flex-1 flex">
+  <main class="flex flex-1 flex-col md:flex-row">
     <SideBar />
     <div id="page-content">
       <RouterView />
