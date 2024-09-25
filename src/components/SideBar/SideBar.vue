@@ -1,5 +1,5 @@
 <script setup>
-import Filters from './Filters.vue'
+import Languages from './Languages.vue'
 
 defineProps({
   msg: {
@@ -11,12 +11,13 @@ defineProps({
 
 <template>
   <div id="sidebar">
-    <Filters />
+    <h3 class="borderm-b pb-3 mb-3">Filters</h3>
+    <Languages />
   </div>
 </template>
 
 <style scoped>
 #sidebar {
-  @apply bg-gray-200 basis-[15rem] p-3;
+  @apply bg-gray-200 basis-[15rem] p-3 pt-6;
 }
 </style>

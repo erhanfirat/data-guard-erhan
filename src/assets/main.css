@@ -7,12 +7,19 @@
 
 a,
 .green {
-  text-decoration: none;
+  @apply p-2 transition no-underline rounded;
   color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
 }
 
 a:hover {
   background-color: hsla(160, 100%, 37%, 0.2);
+}
+
+.borderm-b {
+  @apply border-b-2 border-gray-400;
+}
+
+input,
+select {
+  @apply w-full py-2 px-3 rounded border border-gray-300;
 }
