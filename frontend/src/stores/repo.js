@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { api } from '@/api/api'
+import { useToast } from 'vue-toast-notification'
 
 export const useRepoStore = defineStore('repo', () => {
   // States *******************
@@ -17,6 +18,8 @@ export const useRepoStore = defineStore('repo', () => {
 
   const minStars = ref(0)
   const results = ref({})
+
+  const $toast = useToast()
 
   // Actions *******************
 
@@ -65,6 +68,11 @@ export const useRepoStore = defineStore('repo', () => {
         })
         loading.value = false
         fetched.value = true
+        $toast.success(`Data fetched successfully!`)
+      })
+      .catch((err) => {
+        console.log('err > ', err)
+        $toast.error(`A problem occured while fetching data: ${err.message}`)
       })
   }
 
