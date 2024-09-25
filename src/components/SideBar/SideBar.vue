@@ -1,4 +1,5 @@
 <script setup>
+import Dates from './Dates.vue'
 import Languages from './Languages.vue'
 
 defineProps({
@@ -14,6 +15,7 @@ defineProps({
     <h3 class="borderm-b py-3 mb-3">Filters</h3>
     <Languages />
     <hr class="borderm-b pb-3" />
+    <Dates />
   </div>
 </template>
 
