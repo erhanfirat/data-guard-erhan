@@ -36,11 +36,11 @@ export const useRepoStore = defineStore('repo', () => {
   function doSearch() {
     loading.value = true
     let queryStr = ''
-    if (selectedLangs.value.length) {
-      queryStr += `language:${selectedLangs.value.map((l) => l.value).toString()} `
-    }
     if (minStars.value) {
       queryStr += `stars:>=${minStars.value} `
+    }
+    if (selectedLangs.value.length) {
+      queryStr += `language:${selectedLangs.value.map((l) => l.value).toString()} `
     }
     if (startDate.value) {
       queryStr += `created:>${startDate.value.toISOString().split('T')[0]} `
@@ -66,13 +66,15 @@ export const useRepoStore = defineStore('repo', () => {
             results.value[repo.language] = [repo]
           }
         })
-        loading.value = false
         fetched.value = true
         $toast.success(`Data fetched successfully!`)
       })
       .catch((err) => {
         console.log('err > ', err)
         $toast.error(`A problem occured while fetching data: ${err.message}`)
+      })
+      .finally(() => {
+        loading.value = false
       })
   }
 

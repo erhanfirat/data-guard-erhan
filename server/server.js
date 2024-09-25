@@ -22,6 +22,7 @@ app.get('/search-repos', async (req, res) => {
       res.json(githubResponse.data);
     } catch (error) {
         res.status(500).send('Error fetching data from GitHub');
+        console.log(error);
     }
 });
 
