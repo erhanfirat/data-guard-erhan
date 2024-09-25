@@ -6,7 +6,7 @@ const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}`
 </script>
 
 <template>
-  <header class="">
+  <header>
     <div class="flex gap-3 items-center">
       <div class="flex items-center gap-3">
         <img alt="Vue logo" class="logo" src="@/assets/logo.svg" />

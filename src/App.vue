@@ -15,10 +15,6 @@ import PageHeader from './PageHeader.vue'
 </template>
 
 <style scoped>
-header {
-  @apply bg-gray-100 leading-6 flex justify-start items-center p-3 bg-gray-800 text-gray-50 font-medium;
-}
-
 #page-content {
   @apply flex-1 p-3 pt-6;
 }
@@ -46,12 +42,6 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
   nav {
     text-align: left;
     margin-left: -1rem;
