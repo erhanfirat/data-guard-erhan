@@ -1,25 +1,9 @@
 <script setup>
-import { reactive } from 'vue'
+import { programmingLangs, useRepoStore } from '@/stores/repo'
+import { storeToRefs } from 'pinia'
 import VueSelect from 'vue3-select-component'
-
-const langs = [
-  { label: 'C', value: 'C' },
-  { label: 'C++', value: 'C++' },
-  { label: 'JavaScript', value: 'JavaScript' },
-  { label: 'Go', value: 'Go' },
-  { label: 'Java', value: 'Java' },
-  { label: 'Phyton', value: 'Phyton' },
-  { label: '.Net', value: '.Net' }
-]
-const selectedLangs = reactive([])
-
-const selectLang = (e) => {
-  selectedLangs.push(e)
-}
-
-const deselectLang = (e) => {
-  selectedLangs.splice(selectedLangs.indexOf(e), 1)
-}
+const repo = useRepoStore()
+const { selectedLangs } = storeToRefs(repo)
 </script>
 
 <template>
@@ -28,7 +12,7 @@ const deselectLang = (e) => {
       {{ lang.label }}
       <strong
         class="absolute text-lg text-red-800 cursor-pointer alert-del right-[5px] top-0"
-        @click="deselectLang(lang)"
+        @click="repo.deselectLang(lang)"
         >&times;</strong
       >
     </div>
@@ -36,8 +20,8 @@ const deselectLang = (e) => {
 
   <VueSelect
     v-model="selected"
-    :options="langs.filter((l) => !selectedLangs.includes(l))"
-    @option-selected="selectLang"
+    :options="programmingLangs.filter((l) => !selectedLangs.includes(l))"
+    @option-selected="repo.selectLang"
     placeholder="Search languages..."
   />
 </template>
