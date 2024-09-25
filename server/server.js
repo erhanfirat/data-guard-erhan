@@ -10,7 +10,13 @@ app.get('/search-repos', async (req, res) => {
     try {
       console.log("req.query > ", req.query);
       const query = req.query.q || ''; 
-      const githubResponse = await axios.get(`https://api.github.com/search/repositories?q=${query}`);
+      const githubResponse = await axios.get(`https://api.github.com/search/repositories`, 
+        { 
+          params: {
+            q: query, 
+            sort: "stars"
+          }
+        });
 
       res.json(githubResponse.data);
     } catch (error) {

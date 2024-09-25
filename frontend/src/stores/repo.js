@@ -29,7 +29,7 @@ export const useRepoStore = defineStore('repo', () => {
     api
       .get('/search-repos', {
         params: {
-          q: selectedLangs.value.map((l) => l.value).toString(),
+          q: selectedLangs.value.map((l) => l.value).toString()
         }
       })
       .then((res) => {
