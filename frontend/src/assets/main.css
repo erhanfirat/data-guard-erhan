@@ -16,7 +16,7 @@ a:hover {
 }
 
 .borderm-b {
-  @apply border-b-2 border-gray-400;
+  @apply border-0 border-b-2 border-gray-400;
 }
 
 input,

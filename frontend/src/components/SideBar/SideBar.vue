@@ -10,7 +10,7 @@ const repo = useRepoStore()
 
 <template>
   <div id="sidebar">
-    <h3 class="borderm-b pb-3 mb-3">Filters</h3>
+    <h3 class="pb-3 mb-3">Filters</h3>
     <Languages />
     <hr class="borderm-b py-3 mb-3" />
     <Dates />
