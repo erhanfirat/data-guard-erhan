@@ -14,7 +14,8 @@ app.get('/search-repos', async (req, res) => {
         { 
           params: {
             q: query, 
-            sort: "stars"
+            sort: "stars",
+            per_page: 100
           }
         });
 

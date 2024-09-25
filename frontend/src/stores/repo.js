@@ -13,7 +13,7 @@ export const useRepoStore = defineStore('repo', () => {
   const endDate = ref(new Date())
 
   const minStars = ref(0)
-  const results = ref([])
+  const results = ref({})
 
   // Actions *******************
 
@@ -29,11 +29,20 @@ export const useRepoStore = defineStore('repo', () => {
     api
       .get('/search-repos', {
         params: {
-          q: selectedLangs.value.map((l) => l.value).toString()
+          q: `stars:>=${minStars.value} language:${selectedLangs.value.map((l) => l.value).toString()} created:>${startDate.value.toISOString().split('T')[0]} created:<${endDate.value.toISOString().split('T')[0]}`
         }
       })
       .then((res) => {
         console.log('repo response > ', res.data)
+        res.data.items.forEach((repo) => {
+          if (results.value[repo.language]) {
+            results.value[repo.language].push(repo)
+          } else {
+            results.value[repo.language] = [repo]
+          }
+        })
+
+        console.log('results final > ', results)
       })
   }
 
