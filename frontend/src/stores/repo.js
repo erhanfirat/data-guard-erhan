@@ -42,11 +42,12 @@ export const useRepoStore = defineStore('repo', () => {
     if (selectedLangs.value.length) {
       queryStr += `language:${selectedLangs.value.map((l) => l.value).toString()} `
     }
-    if (startDate.value) {
-      queryStr += `created:>${startDate.value.toISOString().split('T')[0]} `
-    }
-    if (endDate.value) {
-      queryStr += `${startDate.value ? 'AND ' : ''}created:<${endDate.value.toISOString().split('T')[0]}`
+    if (startDate.value && endDate.value) {
+      queryStr += `created:${startDate.value.toISOString().split('T')[0]}..${endDate.value.toISOString().split('T')[0]} `
+    } else if (startDate.value) {
+      queryStr += `created:>${startDate.value.toISOString().split('T')[0]}`
+    } else if (endDate.value) {
+      queryStr += `created:<${endDate.value.toISOString().split('T')[0]}`
     }
 
     api
