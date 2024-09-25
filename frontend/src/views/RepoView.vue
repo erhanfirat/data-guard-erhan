@@ -16,11 +16,15 @@ console.log(repo.results)
         {{ langRepoList[0].language || 'Not have a language' }}
       </template>
       <template #repositories>
-        <div v-for="repo in langRepoList" :key="repo.id" class="my-3">
+        <div v-for="repo in langRepoList" :key="repo.id" class="my-4 pe-3">
           <a :href="repo.html_url" class="text-lg">{{ repo.full_name }}</a>
-          <p class="text-sm pl-2">{{ repo.description }}</p>
-          <p class="text-sm pl-2">{{ repo.created_at.replace('T', ' ').replace('Z', '') }}</p>
-          <p><span class="text-sm pl-2">&#11088; </span>{{ repo.stargazers_count }}</p>
+          <div class="flex justify-between">
+            <p><span class="text-xs pl-2">&#11088; </span>{{ repo.stargazers_count }}</p>
+            <p class="text-sm text-right italic pl-2">
+              {{ repo.created_at.replace('T', ' ').replace('Z', '') }}
+            </p>
+          </div>
+          <p class="text-sm pl-2 text-ellipsis line-clamp-2">{{ repo.description }}</p>
         </div>
       </template>
     </RepoList>
