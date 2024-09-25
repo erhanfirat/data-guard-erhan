@@ -25,10 +25,13 @@ select {
 }
 
 .btn {
-  @apply rounded bg-sky-600 text-gray-50 py-2 px-6 transition-all cursor-pointer;
+  @apply flex items-center justify-center rounded bg-sky-600 text-gray-50 py-2 px-6 transition-colors cursor-pointer;
 }
 .btn:hover {
   @apply bg-sky-500 text-white;
+}
+.btn:disabled {
+  @apply text-gray-400 bg-sky-500 cursor-not-allowed pointer-events-none;
 }
 
 h3 {

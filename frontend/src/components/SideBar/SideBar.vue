@@ -1,4 +1,5 @@
 <script setup>
+import Spinner from '../shared/Spinner.vue'
 import Dates from './Dates.vue'
 import Languages from './Languages.vue'
 import Stars from './Stars.vue'
@@ -16,7 +17,10 @@ const repo = useRepoStore()
     <hr class="borderm-b py-3 mb-3" />
     <Stars />
     <hr class="borderm-b py-3 mb-3" />
-    <button class="btn w-full" @click="repo.doSearch">Search</button>
+    <button class="btn w-full" @click="repo.doSearch" :disabled="repo.loading">
+      <Spinner v-if="repo.loading" />
+      Search
+    </button>
   </div>
 </template>
 

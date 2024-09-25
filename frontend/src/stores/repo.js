@@ -4,7 +4,10 @@ import { api } from '@/api/api'
 
 export const useRepoStore = defineStore('repo', () => {
   // States *******************
+
   const selectedLangs = ref([])
+  const loading = ref(false)
+  const fetched = ref(false)
 
   const startInitial = new Date()
   startInitial.setMonth(startInitial.getMonth() - 1)
@@ -19,13 +22,16 @@ export const useRepoStore = defineStore('repo', () => {
 
   function selectLang(lang) {
     selectedLangs.value.push(lang)
+    fetched.value = false
   }
 
   function deselectLang(lang) {
     selectedLangs.value.splice(selectedLangs.value.indexOf(lang), 1)
+    fetched.value = false
   }
 
   function doSearch() {
+    loading.value = true
     api
       .get('/search-repos', {
         params: {
@@ -43,21 +49,26 @@ export const useRepoStore = defineStore('repo', () => {
         })
 
         console.log('results final > ', results)
+        loading.value = false
+        fetched.value = true
       })
   }
 
   return {
-    programmingLangs,
     selectedLangs,
     startDate,
     endDate,
     minStars,
+    loading,
+    fetched,
     results,
     selectLang,
     deselectLang,
     doSearch
   }
 })
+
+// Statics ********************
 
 export const programmingLangs = [
   { label: 'Assembly', value: 'Assembly' },
