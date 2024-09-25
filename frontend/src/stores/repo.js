@@ -37,16 +37,16 @@ export const useRepoStore = defineStore('repo', () => {
     loading.value = true
     let queryStr = ''
     if (selectedLangs.value.length) {
-      queryStr += ` language:${selectedLangs.value.map((l) => l.value).toString()} `
+      queryStr += `language:${selectedLangs.value.map((l) => l.value).toString()} `
     }
     if (minStars.value) {
-      queryStr += ` stars:>=${minStars.value}  `
+      queryStr += `stars:>=${minStars.value} `
     }
     if (startDate.value) {
-      queryStr += ` created:>${startDate.value.toISOString().split('T')[0]} `
+      queryStr += `created:>${startDate.value.toISOString().split('T')[0]} `
     }
     if (endDate.value) {
-      queryStr += ` ${startDate.value ? 'AND' : ''} created:<${endDate.value.toISOString().split('T')[0]} `
+      queryStr += `${startDate.value ? 'AND ' : ''}created:<${endDate.value.toISOString().split('T')[0]}`
     }
 
     api
