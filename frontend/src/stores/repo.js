@@ -35,7 +35,7 @@ export const useRepoStore = defineStore('repo', () => {
     api
       .get('/search-repos', {
         params: {
-          q: `stars:>=${minStars.value} language:${selectedLangs.value.map((l) => l.value).toString()} created:>${startDate.value.toISOString().split('T')[0]} created:<${endDate.value.toISOString().split('T')[0]}`
+          q: `stars:>=${minStars.value} language:${selectedLangs.value.map((l) => l.value).toString()} created:>${startDate.value.toISOString().split('T')[0]} AND created:<${endDate.value.toISOString().split('T')[0]} `
         }
       })
       .then((res) => {

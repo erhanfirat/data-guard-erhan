@@ -17,10 +17,10 @@ console.log(repo.results)
       </template>
       <template #repositories>
         <div v-for="repo in langRepoList" :key="repo.id" class="my-3">
-          <a :href="repo.html_url">{{ repo.full_name }}</a>
-          <p class="text-sm">{{ repo.description }}</p>
-          <p class="text-sm">{{ repo.created_at.replace('T', ' ').replace('Z', '') }}</p>
-          <p><span class="text-sm">&#11088; </span>{{ repo.stargazers_count }}</p>
+          <a :href="repo.html_url" class="text-lg">{{ repo.full_name }}</a>
+          <p class="text-sm pl-2">{{ repo.description }}</p>
+          <p class="text-sm pl-2">{{ repo.created_at.replace('T', ' ').replace('Z', '') }}</p>
+          <p><span class="text-sm pl-2">&#11088; </span>{{ repo.stargazers_count }}</p>
         </div>
       </template>
     </RepoList>
