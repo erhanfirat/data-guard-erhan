@@ -26,7 +26,7 @@ export const useRepoStore = defineStore('repo', () => {
   }
 
   function doSearch() {
-    api.get('search/repositories?q=Q').then((res) => {
+    api.get('/search-repos?q=Q').then((res) => {
       console.log('repo response > ', res.data)
     })
   }
