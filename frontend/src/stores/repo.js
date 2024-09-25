@@ -26,9 +26,15 @@ export const useRepoStore = defineStore('repo', () => {
   }
 
   function doSearch() {
-    api.get('/search-repos?q=Q').then((res) => {
-      console.log('repo response > ', res.data)
-    })
+    api
+      .get('/search-repos', {
+        params: {
+          q: selectedLangs.value.map((l) => l.value).toString(),
+        }
+      })
+      .then((res) => {
+        console.log('repo response > ', res.data)
+      })
   }
 
   return {
