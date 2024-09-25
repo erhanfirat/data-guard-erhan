@@ -19,8 +19,4 @@ const endDate = ref(new Date())
   </label>
 </template>
 
-<style scoped>
-.lang-tag {
-  @apply rounded bg-gray-300 py-1 ps-4 pe-7 relative;
-}
-</style>
+<style scoped></style>

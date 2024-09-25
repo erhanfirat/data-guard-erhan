@@ -1,6 +1,7 @@
 <script setup>
 import Dates from './Dates.vue'
 import Languages from './Languages.vue'
+import Stars from './Stars.vue'
 
 defineProps({
   msg: {
@@ -16,6 +17,8 @@ defineProps({
     <Languages />
     <hr class="borderm-b pb-3" />
     <Dates />
+    <hr class="borderm-b pb-3" />
+    <Stars />
   </div>
 </template>
 
