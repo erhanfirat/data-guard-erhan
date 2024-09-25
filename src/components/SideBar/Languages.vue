@@ -14,12 +14,10 @@ const langs = [
 const selectedLangs = reactive([])
 
 const selectLang = (e) => {
-  console.log(e)
   selectedLangs.push(e)
 }
 
 const deselectLang = (e) => {
-  console.log(e)
   selectedLangs.splice(selectedLangs.indexOf(e), 1)
 }
 </script>
@@ -40,7 +38,7 @@ const deselectLang = (e) => {
     v-model="selected"
     :options="langs.filter((l) => !selectedLangs.includes(l))"
     @option-selected="selectLang"
-    placeholder="Select an option"
+    placeholder="Search languages..."
   />
 </template>
 
