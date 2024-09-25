@@ -1,18 +1,32 @@
 # data-guard-erhan
 
-This template should help get you started developing with Vue 3 in Vite.
+This projects can do github repository queries by programmin language, date and star rank filters.
+It consist of `frontend` and `server` projects.
 
-## Recommended IDE Setup
+## Server Project
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+As a Node.js project, `Server` responsible to do github repositories search query on local machines without browsers' CORS policy restrictions.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### Installation
 
 ```sh
+cd server
+npm install
+```
+
+### Run Server Project
+
+```sh
+cd server
+node server.js
+```
+
+## Frontend Project
+
+### Installation
+
+```sh
+cd frontend
 npm install
 ```
 
