@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 #app {
-  font-weight: normal;
-  min-height: 100vh;
 }
 
 a,
@@ -15,16 +13,6 @@ a,
   padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-  }
-
-  #app {
-  }
+a:hover {
+  background-color: hsla(160, 100%, 37%, 0.2);
 }

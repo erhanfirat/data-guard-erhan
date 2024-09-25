@@ -1,43 +1,35 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import sha256 from 'crypto-js/sha256'
+import { RouterView } from 'vue-router'
+import SideBar from './components/SideBar/SideBar.vue'
+
+const hashedEmail = sha256('erhanfirat@gmail.com')
+// Step 2: Construct the Gravatar URL.
+const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}`
+// Step 3: Set the image source to the Gravatar URL.
+document.getElementById('gravatar-image').src = gravatarUrl
 </script>
 
 <template>
-  <header class="bg-gray-100">
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <main class="flex-1 flex">
-    <RouterView />
+    <SideBar />
+    <div id="page-content">
+      <RouterView />
+    </div>
   </main>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  @apply bg-gray-100 leading-6 flex justify-start items-center p-3 bg-gray-800 text-gray-50 font-medium;
+}
+
+#page-content {
+  @apply flex-1 p-3;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  @apply w-[40px];
 }
 
 nav a.router-link-exact-active {
@@ -63,16 +55,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {
