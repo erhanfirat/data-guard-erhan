@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { api } from '@/api/api'
 
 export const useRepoStore = defineStore('repo', () => {
   // States *******************
@@ -24,7 +25,11 @@ export const useRepoStore = defineStore('repo', () => {
     selectedLangs.value.splice(selectedLangs.value.indexOf(lang), 1)
   }
 
-  function doSearch() {}
+  function doSearch() {
+    api.get('search/repositories?q=Q').then((res) => {
+      console.log('repo response > ', res.data)
+    })
+  }
 
   return {
     programmingLangs,

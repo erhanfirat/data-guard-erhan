@@ -2,13 +2,9 @@
 import Dates from './Dates.vue'
 import Languages from './Languages.vue'
 import Stars from './Stars.vue'
+import { useRepoStore } from '@/stores/repo'
 
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+const repo = useRepoStore()
 </script>
 
 <template>
@@ -20,7 +16,7 @@ defineProps({
     <hr class="borderm-b py-3 mb-3" />
     <Stars />
     <hr class="borderm-b py-3 mb-3" />
-    <button class="btn w-full">Search</button>
+    <button class="btn w-full" @click="repo.doSearch">Search</button>
   </div>
 </template>
 
